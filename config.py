@@ -8,6 +8,10 @@ class Config:
     NEWS_ARTICLE_URL = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'
     NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    @staticmethod # added  after checking line 11 to 13 ...can be removed
+    def init_app(app):
+        pass
+
 
 
 class ProdConfig(Config):
@@ -30,7 +34,3 @@ class DevConfig(Config):
 
     DEBUG = True
     
-config_options = {
-'development':DevConfig,
-'production':ProdConfig
-}
