@@ -18,8 +18,8 @@ def get_sources(category):
         get_source_data = url.read()
         get_source_response = json.loads(get_source_data)
         source_results = None
-        if get_source_response['results']:
-            source_results_list = get_source_response['results']
+        if get_source_response['sources']:
+            source_results_list = get_source_response['sources']
             source_results = process_results(source_results_list)
     return source_results
 
@@ -36,14 +36,14 @@ def process_results(source_list):
     source_results = []
     for source_item in source_list:
         id = source_item.get('id')
-        name = source_item.get('original_name')
+        name = source_item.get('name')
         description = source_item.get('description')
         url = source_item.get('url')
         category = source_item.get('category')
 
        
         # there was an if append: here for a path,, add it if you find a path 
-    if category:
+    if url:
         source_object = Source(id,name,description,url,category)
         source_results.append(source_object)
 
@@ -58,7 +58,7 @@ def get_source(id):
         source_object = None
         if source_details_response:
             id = source_details_response.get('id')
-            name = source_details_response.get('original_name')
+            name = source_details_response.get('name')
             description = source_details_response.get('description')
             url= source_details_response.get('url')
             category = source_details_response.get('category')
@@ -66,7 +66,8 @@ def get_source(id):
             source_object = Source(id,name,description,url,category)
 
     return source_object
-def get_articles(source):
+
+def get_articles(id):
     '''
     A function that returns a list of articles
     Arg:
@@ -78,12 +79,14 @@ def get_articles(source):
         articles_details_response = json.loads(articles_details_data)
         articles_object = None
         if articles_details_response:
-            id = articles_details_response.get('id')
-            name = articles_details_response.get('original_name')
+            author = articles_details_response('author')
+            title = articles_details_response('title')
             description = articles_details_response.get('description')
             url= articles_details_response.get('url')
-            category = articles_details_response.get('category')
-
-            articles_object = Articles(id,name,description,url,category)
+            urlToImage = articles_details_response.get('urlToImage')
+            publishedAt = articles_details_response.get('publishedAt')
+            content = articles_details_response.get('content')
+            
+            articles_object = Articles(title,description,url,urlToImage,publishedAt,content)
 
     return articles_object

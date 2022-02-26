@@ -1,22 +1,17 @@
-{% extends 'base.html'%} {% block body %}
+{% extends 'base.html'%}{% import 'macros.html' as macro%} {% block body %}
 
 <h3>Welcome back{{id}}</h3>
 <div class="container">
 
     <!-- Articlesbackground -->
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="background: url({{source.name}}) no-repeat center center">
-        </div>
-
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 article-details">
+            <h1>{{source.title}}</h1>
+            <h1>{{source.name}}</h1>
             <h3>{{ source.category }}</h3>
-
             <p class="description"> {{source.description}}</p>
             <p class="url"> <b> {{ source.url}}</b> </p>
-
-
         </div>
     </div>
-
 </div>
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html'%} {% block body %}
+
+<h3>Welcome back</h3>
+<div class="container">
+
+    <!-- Articlesbackground -->
+    <div class="row">
+        <h1>{{article.title}}</h1>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="background: url({{articles.author}}) no-repeat center center">
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 article-details">
+
+            <p class="description"> {{articles.description}}</p>
+            <p class="url"> <b> {{ articles.url}}</b> </p>
+            <p class="urlToImage">{{articles.urlToImage}}</p>
+            <p class="publishedAt">{{ articles.publishedAt }}</p>
+            <p class="content">{{ articles.content }}</p>
+
+
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
