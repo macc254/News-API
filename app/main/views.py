@@ -1,10 +1,10 @@
 from flask import render_template,request,redirect,url_for
-from app.main import app
+from . import main
 from ..requests import get_sources,get_source,get_articles
-
+from models import Source,Articles
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -28,7 +28,7 @@ def index():
 #     id = "abc-news"
 #     return render_template('source.html',id = source_id)
 
-@app.route('/source/<string:id>')
+@main.route('/source/<string:id>')
 def source(id):
 
     '''
@@ -39,7 +39,7 @@ def source(id):
 
     return render_template('source.html',name=name,source=source)
 
-@app.route('/articles/<string:id>')
+@main.route('/articles/<string:id>')
 def articles(id):
 
     '''

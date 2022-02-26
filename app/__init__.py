@@ -19,6 +19,7 @@ def create_app(config_name):
     # setting config
     from .requests import configure_request
     configure_request(app)
+   
     
     # Will add the views and forms
     
