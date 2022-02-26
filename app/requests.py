@@ -1,12 +1,11 @@
 from app import app
 import urllib.request,json
-from .models import source
+from .models import source,articles
 
 Source = source.Source
+Articles = articles.Articles
 # Getting api key
 apiKey = app.config['NEWS_API_KEY']
-
-
 # Getting the movie base url
 base_url = app.config["NEWS_API_BASE_URL"]
 
@@ -15,18 +14,13 @@ def get_sources(category):
     Function that gets the json response to our url request
     '''
     get_source_url = base_url.format(category,apiKey)
-
     with urllib.request.urlopen(get_source_url) as url:
         get_source_data = url.read()
         get_source_response = json.loads(get_source_data)
-
         source_results = None
-
         if get_source_response['results']:
             source_results_list = get_source_response['results']
             source_results = process_results(source_results_list)
-
-
     return source_results
 
 def process_results(source_list):
@@ -61,7 +55,6 @@ def get_source(id):
     with urllib.request.urlopen(get_source_details_url) as url:
         source_details_data = url.read()
         source_details_response = json.loads(source_details_data)
-
         source_object = None
         if source_details_response:
             id = source_details_response.get('id')
@@ -71,6 +64,26 @@ def get_source(id):
             category = source_details_response.get('category')
 
             source_object = Source(id,name,description,url,category)
-           
 
     return source_object
+def get_articles(source):
+    '''
+    A function that returns a list of articles
+    Arg:
+        source id 
+    '''
+    get_articles_details_url = base_url.format(id,apiKey)
+    with urllib.request.urlopen(get_articles_details_url) as url:
+        articles_details_data = url.read()
+        articles_details_response = json.loads(articles_details_data)
+        articles_object = None
+        if articles_details_response:
+            id = articles_details_response.get('id')
+            name = articles_details_response.get('original_name')
+            description = articles_details_response.get('description')
+            url= articles_details_response.get('url')
+            category = articles_details_response.get('category')
+
+            articles_object = Articles(id,name,description,url,category)
+
+    return articles_object
