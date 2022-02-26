@@ -1,1 +1,1 @@
-from config import DevConfig
+from app.config import DevConfig

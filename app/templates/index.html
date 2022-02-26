@@ -1,1 +1,40 @@
-<h1>Welcome to news hour</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> Welcome to News Hour</title>
+    {% endif %}
+</head>
+
+<body>
+    <!--Business news section  -->
+    <h3> Business News</h3>
+    <ul>
+        {% for business_news in business %}
+        <li>{{ business_news.title }}</li>
+        {% endfor %}
+    </ul>
+    <h3> General News</h3>
+    <ul>
+        {% for general_news in general %}
+        <li>{{ general_news.title }}</li>
+        {% endfor %}
+    </ul>
+    <h3> Health News</h3>
+    <ul>
+        {% for health in health_news %}
+        <li>{{ health.title }}</li>
+        {% endfor %}
+    </ul>
+    <h3> Technology News</h3>
+    <ul>
+        {% for technology_news in technology}
+        <li>{{ technology_news.title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
