@@ -25,33 +25,6 @@ def get_sources(category):
             source_results_list = get_source_response['sources']
             source_results = process_results(source_results_list)
     return source_results
-
-def process_results(source_list):
-    '''
-    Function  that processes the movie result and transform them to a list of Objects
-
-    Args:
-        movie_list: A list of dictionaries that contain movie details
-
-    Returns :
-        movie_results: A list of movie objects
-    '''
-    source_results = []
-    for source_item in source_list:
-        id = source_item.get('id')
-        name = source_item.get('name')
-        description = source_item.get('description')
-        url = source_item.get('url')
-        category = source_item.get('category')
-
-       
-        # there was an if append: here for a path,, add it if you find a path 
-    if url:
-        source_object = Source(id,name,description,url,category)
-        source_results.append(source_object)
-
-    return source_results
-
 def get_source(id):
     get_source_details_url = base_url.format(id,apiKey)
 
@@ -69,6 +42,31 @@ def get_source(id):
             source_object = Source(id,name,description,url,category)
 
     return source_object
+
+
+def process_results(source_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+
+    Args:
+        source_list: A list of dictionaries that contain movie details
+
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    source_results = []
+    for source_item in source_list:
+        id = source_item.get('id')
+        name = source_item.get('name')
+        description = source_item.get('description')
+        url = source_item.get('url')
+        category = source_item.get('category')
+   
+        source_object = Source(id,name,description,url,category)
+        source_results.append(source_object)
+
+    return source_results
+
 
 def get_articles(id):
     '''
