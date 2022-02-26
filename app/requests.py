@@ -10,7 +10,7 @@ apiKey = app.config['NEWS_API_KEY']
 # Getting the movie base url
 base_url = app.config["NEWS_API_BASE_URL"]
 
-def get_source(category):
+def get_sources(category):
     '''
     Function that gets the json response to our url request
     '''
@@ -54,3 +54,23 @@ def process_results(source_list):
         source_results.append(source_object)
 
     return source_results
+
+def get_source(id):
+    get_source_details_url = base_url.format(id,apiKey)
+
+    with urllib.request.urlopen(get_source_details_url) as url:
+        source_details_data = url.read()
+        source_details_response = json.loads(source_details_data)
+
+        source_object = None
+        if source_details_response:
+            id = source_details_response.get('id')
+            name = source_details_response.get('original_name')
+            description = source_details_response.get('description')
+            url= source_details_response.get('url')
+            category = source_details_response.get('category')
+
+            source_object = Source(id,name,description,url,category)
+           
+
+    return source_object
