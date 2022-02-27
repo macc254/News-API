@@ -92,8 +92,8 @@ def get_articles(source):
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
         articles_results = []
-        if get_articles_response['sources']:
-            articles_results_list = get_articles_response['sources']
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
             articles_results = process_articles_results(articles_results_list)
     return articles_results
 

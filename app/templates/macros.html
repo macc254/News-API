@@ -3,12 +3,4 @@
     <a href="/articles/{{source.id}}">Source: {{source.name}}</a>
 </div>
 
-{% endfor %}{% endmacro %} {% macro displayArticlesList(articles_list) %} {% for articles in articles_list %}
-<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 ">
-    <p>{{articles.author}}</p>
-    <p>{{articles.title}}</p>
-    <p>{{articles.description}}</p>
-    <a href="{{articles.url}}">{{articles.name}}</a>
-</div>
-
-{% endfor %} {% endmacro %}
+{% endfor %}{% endmacro %} {% macro displayArticlesList(articles_list) %} {% for articles in articles_list %} {% endfor %} {% endmacro %}

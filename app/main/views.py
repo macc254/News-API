@@ -26,9 +26,8 @@ def articles(source_id):
     View source page function that returns the source articles page and its data
     '''
     articles = get_articles(source_id)
-    name = f'{articles.name}'
 
-    return render_template('articles.html',name=name,articles=articles)
+    return render_template('articles.html',articles=articles)
 
 # @app.route('/source/<string:source_id>')
 # def source(source_id):
