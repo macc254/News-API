@@ -17,7 +17,12 @@
             <p class="publishedAt">{{ articles.publishedAt }}</p>
             <p class="content">{{ articles.content }}</p>
 
-
+            <div class="row">
+                <h3>Articles</h3>
+                <ul>
+                    {{ macro.ArticlesList(CNN)}}
+                </ul>
+            </div>
 
         </div>
     </div>

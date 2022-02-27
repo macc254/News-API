@@ -8,23 +8,24 @@
 <!-- Content block -->
 {% block content %}
 <!--Business news section  -->
-<h3> Business News</h3>
-<ul>
-    {{ macro.displaySourceList(business)}}
-</ul>
-<h3> General News</h3>
-<ul>
-    {{ macro.displaySourceList(general)}}
-
-</ul>
-<h3> Health News</h3>
-<ul>
-    {{ macro.displaySourceList(health)}}
-
-</ul>
-<h3> Technology News</h3>
-<ul>
-    {{ macro.displaySourceList(technology)}}
-
-</ul>
+<div class="container-fluid">
+    <h2>Welcome to News Desk</h2>
+    <div class="row">
+        <h3>Sources per category:</h3>
+        <h3> General News</h3>
+        {{ macro.displaySourceList(general)}}
+    </div>
+    <div class="row">
+        <h3> Business News</h3>
+        {{ macro.displaySourceList(business)}}
+    </div>
+    <div class="row">
+        <h3> Technology News</h3>
+        {{ macro.displaySourceList(technology)}}
+    </div>
+    <div class="row">
+        <h3> Health News</h3>
+        {{ macro.displaySourceList(health)}}
+    </div>
+</div>
 {% endblock %}
