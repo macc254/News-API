@@ -29,23 +29,3 @@ def articles(source_id):
 
     return render_template('articles.html',articles=articles)
 
-# @app.route('/source/<string:source_id>')
-# def source(source_id):
-
-#     '''
-#     View movie page function that returns the movie details page and its data
-#     '''
-#     id = "abc-news"
-#     return render_template('source.html',id = source_id)
-
-# @main.route('/source/<string:id>')
-# def source(id):
-
-#     '''
-#     View source page function that returns the source articles page and its data
-#     '''
-#     source = get_source(id)
-#     name = f'{source.name}'
-
-#     return render_template('source.html',name=name,source=source)
-

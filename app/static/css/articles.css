@@ -1,0 +1,22 @@
+.container {
+    color: white !important;
+    background-color: black!important;
+}
+
+button {
+    color: red !important;
+    background-color: black !important;
+}
+
+h3 {
+    color: cyan;
+}
+
+a {
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    color: cyan;
+}
