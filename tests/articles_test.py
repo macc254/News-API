@@ -4,7 +4,7 @@ from app.models import Articles
 
 class ArticlesTest(unittest.TestCase):
     '''
-    Test Class to test the behaviour of the Sourceclass
+    Test Class to test the behaviour of the Articles class
     '''
 
     def setUp(self):
@@ -15,6 +15,7 @@ class ArticlesTest(unittest.TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_articles,Articles))
+        
     def tearDown(self):
         Articles.clear_articles()
         

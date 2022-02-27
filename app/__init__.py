@@ -4,7 +4,6 @@ from config import config_options
 
 bootstrap = Bootstrap()
 
-
 # Initializing application
 def create_app(config_name):
     app = Flask(__name__)
@@ -20,8 +19,5 @@ def create_app(config_name):
     # setting config
     from .requests import configure_request
     configure_request(app)
-   
-    
-    # Will add the views and forms
-    
+       
     return app
